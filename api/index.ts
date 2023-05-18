@@ -1,11 +1,10 @@
-import type { AxiosRequestConfig } from 'axios'
-
+import type { UseFetchOptions } from 'nuxt/app'
+import type { UnwrapRef } from 'vue'
 import type * as URLKEYS from './URLConstants'
 import type { ResponseType } from './apiResponseType'
-import { GET_ARTICLES } from './URLConstants'
-import type { ServerResponse } from '~/utils/request'
-import axios from '~/utils/request'
+import { GET_ARTICLES, GET_ARTICLE_DETAIL } from './URLConstants'
 import type { DeepExpand, ObjectValues } from '~/types/utils'
+import service from '~/utils/request'
 
 type IResponse<T> =
   | {
@@ -18,24 +17,21 @@ type IResponse<T> =
   }
 
 export type RequestKeyType = ObjectValues<typeof URLKEYS>
-type AxiosRequestConfigWithURL<T extends RequestKeyType> =
-  AxiosRequestConfig & { url: T }
 
 function request<T extends RequestKeyType>(
-  config: AxiosRequestConfigWithURL<T>,
+  url: T,
+  config: UseFetchOptions<ResponseType[T]>,
 ) {
-  return new Promise<ServerResponse<ResponseType[T]>>((resolve, reject) => {
+  return new Promise<ResponseType[T]>((resolve, reject) => {
     /*
     传递泛型给http中的拦截器
     */
-    axios
-      .request<ResponseType[T]>({
-        url: config.url,
-        data: config.data || '',
-        params: config.params || '',
-        method: config.method || 'get',
-        headers: config.headers || {},
-      })
+    service<ResponseType[T]>(url, {
+      body: config.body || '',
+      params: config.params,
+      method: config.method as unknown as 'get' | 'post',
+      headers: config.headers as UnwrapRef<typeof config['headers']>,
+    })
       .then((res) => {
         resolve(res)
       })
@@ -43,26 +39,6 @@ function request<T extends RequestKeyType>(
         reject(error)
       })
   })
-}
-/**
- * @description 错误捕获函数
- * @author 张聪
- * @param {AxiosRequestConfigWithURL} config axios配置
- */
-async function errCaptured<T extends RequestKeyType>(
-  config: AxiosRequestConfigWithURL<T>,
-): Promise<IResponse<ServerResponse<ResponseType[T]>>> {
-  try {
-    const res = await request(config)
-
-    return {
-      res,
-      err: null,
-    }
-  }
-  catch (err: any) {
-    return { res: null, err }
-  }
 }
 
 /**
@@ -73,11 +49,10 @@ async function errCaptured<T extends RequestKeyType>(
  */
 async function getCaptured<T extends RequestKeyType>(url: T,
   params: Object = {},
-  config: AxiosRequestConfig = {}) {
-  return errCaptured<T>({
+  config: UseFetchOptions<ResponseType[T]> = {}) {
+  return request<T>(url, {
     ...config,
     method: 'get',
-    url,
     params,
   })
 }
@@ -92,12 +67,11 @@ async function getCaptured<T extends RequestKeyType>(url: T,
 
 async function postCaptured<T extends RequestKeyType>(url: T,
   data: Object = {},
-  config: AxiosRequestConfig = {}) {
-  return errCaptured<T>({
+  config: UseFetchOptions<ResponseType[T]> = {}) {
+  return request<T>(url, {
     ...config,
     method: 'post',
-    url,
-    data,
+    body: data,
   })
 }
 export interface PaginationData<T> {
@@ -110,11 +84,17 @@ export interface PaginationData<T> {
 export function initData<T>(
   url: RequestKeyType,
   params: any,
-): Promise<IResponse<ServerResponse<PaginationData<T>>>> {
+): Promise<PaginationData<T>> {
   return getCaptured(url, params) as unknown as Promise<
-  IResponse<ServerResponse<PaginationData<T>>>
+  PaginationData<T>
   >
 }
-export function getArticles(preview = false) {
-  return getCaptured(GET_ARTICLES, { preview })
+export function getArticles() {
+  return getCaptured(GET_ARTICLES)
+}
+interface GetArticleDetailParams {
+  id: string
+}
+export function getArticleDetail(params: GetArticleDetailParams) {
+  return getCaptured(GET_ARTICLE_DETAIL, params)
 }

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAppStore } from '../composables/app'
+
 const color = useColorMode()
 useHead({
   meta: [{
@@ -10,6 +12,8 @@ useHead({
 
 const checked = ref(false)
 const toggle = ref((e: MouseEvent) => {})
+const store = useAppStore()
+
 onMounted(() => {
   checked.value = document.documentElement.classList.contains('dark')
   // @ts-expect-error: Transition API
@@ -46,13 +50,20 @@ onMounted(() => {
       // @ts-expect-error: Transition API
       const transition = document.startViewTransition(() => {
         setClass((isDark = !isDark))
+
         userPreference = isDark
           ? query.matches ? 'auto' : 'dark'
           : query.matches ? 'light' : 'auto'
+
         color.preference = userPreference
       })
+
       transition.ready.then(() => {
         const clipPath = [
+          // 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
+          // 'polygon(-50% 50%, 50% -50%, 150% 50%, 50% 150%',
+          // 'polygon(0 0, 50% 50%, 100% 100%, 50% 50%)',
+          // 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
           `circle(0px at ${x}px ${y}px)`,
           `circle(${endRadius}px at ${x}px ${y}px)`,
         ]
@@ -61,8 +72,8 @@ onMounted(() => {
             clipPath: isDark ? clipPath : [...clipPath].reverse(),
           },
           {
-            duration: 300,
-            easing: 'ease-in',
+            duration: 500,
+            easing: 'ease-in-out',
             pseudoElement: isDark ? '::view-transition-new(root)' : '::view-transition-old(root)',
           },
         )
@@ -94,6 +105,7 @@ onMounted(() => {
 })
 watch(checked, (isNewDark) => {
   color.preference = !isNewDark ? 'light' : 'dark'
+  store.isDark = isNewDark
 })
 function toggleDark(e: MouseEvent) {
   toggle.value?.(e)

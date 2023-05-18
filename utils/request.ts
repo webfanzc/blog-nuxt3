@@ -1,6 +1,5 @@
 import { ElMessage } from 'element-plus'
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
+import { ResponseErrorCode } from '~/types/enums'
 
 // 创建一个错误
 function errorCreate(msg: string) {
@@ -17,64 +16,39 @@ function errorLog(error: Error) {
     duration: 5 * 1000,
   })
 }
-
-// 创建一个 axios 实例
-const service = axios.create({
+const service = $fetch.create({
   baseURL: '/api',
-  timeout: 20000, // 请求超时时间
-  withCredentials: true,
-})
+  onRequest({ options }) {
+    if (options.method?.toLowerCase() === 'get')
+      delete options.body
 
-// 请求拦截器
-service.interceptors.request.use(
-  (config) => {
-    return config
+    // console.log('onRequest', options)
   },
-  (error) => {
-    // 发送失败
-    return Promise.reject(error)
+  onRequestError({ error }) {
+    // console.log('onRequestError', error)
+    errorCreate(`${error.message}`)
   },
-)
-export interface ServerResponse<T = any> {
-  data: T
-}
-export interface IAxios<D = null> {
-  code: number
-  msg: string
-  data: D
-}
-// 响应拦截器
-service.interceptors.response.use(
-  <T>(response: AxiosResponse<IAxios<T>>) => {
-    // dataAxios 是 axios 返回数据中的 data
-    const dataAxios = response.data
-    // 这个状态码是和后端约定的
-    const { code, data, msg } = dataAxios
+  onResponse(response) {
+    const { code, msg, data } = response.response._data as IResponse
 
-    // 根据 code 进行判断
-    if (response.status < 200 || response.status > 502) {
-      errorCreate(`${response.statusText}`)
-      return Promise.reject(response.statusText)
+    if (code === ResponseErrorCode.Error) {
+      errorCreate(msg)
+      response.response._data = Promise.reject(data)
     }
     else {
-      if (code !== 0)
-        return Promise.reject(dataAxios)
-
-      return {
-        data,
-      } as AxiosResponse
+      response.response._data = data
     }
   },
-  (error) => {
-    const { response, status } = error
-
-    if (status < 200 || status > 502) {
-      errorCreate(`${response?.data?.msg ?? response?.statusText}`)
-      return Promise.reject(error)
-    }
-
-    return Promise.reject(error)
+  onResponseError(error) {
+    // console.log('onResponseError', error)
+    errorCreate(`${error.error?.message}`)
   },
-)
+})
+
+export interface IResponse<T = null> {
+  code: ResponseErrorCode
+  msg: string
+  data: T
+}
 
 export default service

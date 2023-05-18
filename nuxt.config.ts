@@ -5,7 +5,15 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
-    '@pinia/nuxt',
+    [
+      '@pinia/nuxt',
+      {
+        autuImports: [
+          'defineStore',
+          'storeToRefs',
+        ],
+      },
+    ],
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@element-plus/nuxt',
@@ -17,30 +25,24 @@ export default defineNuxtConfig({
     inlineSSRStyles: false,
     renderJsonPayloads: true,
   },
-  vite: {
-    server: {
-      proxy: {
-        '/api': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
-          cookieDomainRewrite: 'localhost',
-        },
-      },
-    },
-  },
 
   css: [
     '@unocss/reset/tailwind.css',
+    'assets/css/main.scss',
   ],
 
   colorMode: {
     classSuffix: '',
   },
-
   nitro: {
     esbuild: {
       options: {
         target: 'esnext',
+      },
+    },
+    routeRules: {
+      '/api/**': {
+        proxy: 'http://localhost:3000/**',
       },
     },
     prerender: {

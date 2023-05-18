@@ -4,7 +4,7 @@ import { initData } from '~/api'
 import type { ResponseType } from '~/api/apiResponseType'
 
 interface PageOptions {
-  current?: number
+  pageNo?: number
   pageSize?: number
 }
 
@@ -14,7 +14,7 @@ export default function usePagination<
 >(
   url: T,
   pageOpts: PageOptions = {
-    current: 1,
+    pageNo: 1,
     pageSize: 10,
   },
   mainParams: P = {} as P,
@@ -25,48 +25,38 @@ export default function usePagination<
 
   const total = ref(0)
   const list = ref<ResponseType[T]>([])
-  const [loading, toggleLoading] = useToggle(false)
+  const pageCount = computed(() => {
+    return Math.ceil(total.value / (page.pageSize ?? 10))
+  })
 
-  const getList = async (pageNo = page.current, params: P = {} as P) => {
-    if (loading)
-      return
-
-    pageNo && (page.current = pageNo)
+  const getList = async (pageNo = page.pageNo, params: P = {} as P) => {
+    pageNo && (page.pageNo = pageNo)
 
     const query = {
       ...page,
       ...mainParams,
       ...params,
     }
-
-    toggleLoading(true)
-    const { res } = await initData<T>(url, query)
-    toggleLoading(false)
-
-    if (!res) {
-      list.value = []
+    try {
+      const res = await initData<T>(url, query)
+      list.value = [list.value, ...res.list] as UnwrapRef<ResponseType[T]>
+      total.value = res.total
 
       return {
-        list: [],
-        total: 0,
+        list: res.list as UnwrapRef<ResponseType[T]>,
+        total: res.total,
       }
     }
-    else {
-      list.value = res.data.list as UnwrapRef<ResponseType[T]>
-      total.value = +res.data.total
-
-      return {
-        list: res.data.list,
-        total: +res.data.total,
-      }
+    catch (e) {
+      return Promise.reject(e)
     }
   }
 
   return {
     page,
     total,
+    pageCount,
     list,
     getList,
-    loading,
   }
 }

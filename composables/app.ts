@@ -1,16 +1,17 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { DEFAULT_THEME } from '~/constants'
 
 export const useAppStore = defineStore('app', () => {
-  /**
-   * Current named of the user.
-   */
-  const site = ref({
-    appearanceTransition: true,
-    appearance: 'dark',
+  const isDark = ref(false)
+  const themes = ref(DEFAULT_THEME)
+
+  const currentTheme = computed(() => {
+    return isDark.value ? themes.value.dark : themes.value.light
   })
 
   return {
-    site,
+    isDark,
+    currentTheme,
   }
 })
 

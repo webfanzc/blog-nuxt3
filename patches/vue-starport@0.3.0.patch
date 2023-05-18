@@ -1,0 +1,27 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 323ab24d45612b92e488f2a54115b8c2381f7e87..948cc4fd9e7da564a2d850c015d69cf4264d2277 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -78,6 +78,9 @@ const StarportProxy = defineComponent({
+     }
+   }, proxyProps),
+   setup(props, ctx) {
++    if(typeof window === 'undefined'){
++        return h("div", null , ctx.slots.default ? h(ctx.slots.default) : void 0);
++    }
+     const state = inject(InjectionState);
+     const sp = computed(() => state.getInstance(props.port, props.component));
+     const el = ref();
+@@ -451,8 +454,10 @@ const StarportCarrier = defineComponent({
+   name: "StarportCarrier",
+   setup(_, { slots }) {
+     const state = createInternalState(inject(InjectionOptions, {}));
+-    const app = getCurrentInstance().appContext.app;
+-    app.provide(InjectionState, state);
++    if(typeof window !== 'undefined'){
++      const app = getCurrentInstance().appContext.app;
++      app.provide(InjectionState, state);
++    }
+     return () => {
+       return [
+         slots.default?.(),

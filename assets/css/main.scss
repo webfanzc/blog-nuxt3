@@ -1,0 +1,23 @@
+.slide-enter{
+    --step: 60ms;
+    --initial: 0ms;
+    animation: fade-enter 1s both 1;
+    animation-delay: calc(var(--initial) + var(--stage) * var(--step))
+}
+@keyframes fade-enter {
+  0% {
+    // transform: translateX(10px);
+    opacity: 0
+  }
+
+  to {
+    // transform: translateX(0);
+    opacity: 100
+  }
+}
+// [data-starport-craft] {
+//   background: #0805;
+// }
+// [data-starport-proxy]:not([data-starport-landed]) {
+//   background: #8005;
+// }
