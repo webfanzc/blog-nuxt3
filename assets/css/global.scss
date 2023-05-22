@@ -1,0 +1,106 @@
+$primary: #bb83ca;
+$success: #38C066;
+$warning: #FFB000;
+$error: #E4464F;
+$info:#909399;
+$background: #ffffff;
+$sub: #B3BCC9;
+$title: #6F8096;
+$main: #1D1D26;
+$white: #ffffff;
+$black: #000000;
+$darkBackground: #0F1521;
+$darkSub: #515E71;
+$darkMain: #ededed;
+
+
+html {
+  --bl-primary: #{$primary};
+  --bl-success: #{$success};
+  --bl-warning: #{$warning};
+  --bl-error: #{$error};
+  --bl-background: #{$background};
+  --bl-sub: #{$sub};
+  --bl-title: #{$title};
+  --bl-main: #{$main};
+  --bl-white: #{$white};
+  --bl-black: #{$black};
+  --bl-info: #{$info};
+  --el-color-primary: var(--bl-primary) !important;
+  --el-color-success: var(--bl-success) !important;
+  --el-color-warning: var(--bl-warning) !important;
+  --el-color-danger: var(--bl-error) !important;
+  --el-color-error: var(--bl-error) !important;
+  --el-color-info: var(--bl-info) !important;
+
+  &.dark {
+    --bl-background: #{$darkBackground};
+    --bl-sub: #{$darkSub};
+    --bl-main: #{$darkMain};
+  }
+}
+
+html {
+  @for $i from 1 to 10 {
+    --bl-primary-light-#{10 - $i}: #{mix($primary, #ffffff, 10% * $i)};
+    --bl-primary-dark-#{10 - $i}: #{mix($primary, #000000, 10% * $i)};
+    --bl-success-light-#{10 - $i}: #{mix($success, #ffffff, 10% * $i)};
+    --bl-success-dark-#{10 - $i}: #{mix($success, #000000, 10% * $i)};
+    --bl-warning-light-#{10 - $i}: #{mix($warning, #ffffff, 10% * $i)};
+    --bl-warning-dark-#{10- $i}: #{mix($warning, #000000, 10% * $i)};
+    --bl-error-light-#{10 - $i}: #{mix($error, #ffffff, 10% * $i)};
+    --bl-error-dark-#{10- $i}: #{mix($error, #000000, 10% * $i)};
+    --bl-background-light-#{10 - $i}: #{mix($background, #ffffff, 10% * $i)};
+    --bl-background-dark-#{10- $i}: #{mix($background, #000000, 10% * $i)};
+    --bl-sub-light-#{10 - $i}: #{mix($sub, #ffffff, 10% * $i)};
+    --bl-sub-dark-#{10 - $i}: #{mix($sub, #000000, 10% * $i)};
+    --bl-title-light-#{10 - $i}: #{mix($title, #ffffff, 10% * $i)};
+    --bl-title-dark-#{10 - $i}: #{mix($title, #000000, 10% * $i)};
+    --bl-main-light-#{10 - $i}: #{mix($main, #ffffff, 10% * $i)};
+    --bl-main-dark-#{10 - $i}: #{mix($main, #000000, 10% * $i)};
+    --el-color-primary-light-#{10 - $i}: #{mix($primary, #ffffff, 10% * $i)} !important;
+    --el-color-primary-dark-#{10 - $i}: #{mix($primary, #000000, 10% * $i)} !important;
+    --el-color-info-light-#{10 - $i}: #{mix($info, #ffffff, 10% * $i)} !important;
+    --el-color-info-dark-#{10 - $i}: #{mix($info, #000000, 10% * $i)} !important;
+  }
+
+  &.dark {
+    @for $i from 1 to 10 {
+      --bl-background-light-#{10 - $i}: #{mix($darkBackground, #ffffff, 10% * $i)};
+      --bl-background-dark-#{10- $i}: #{mix($darkBackground ,#000000, 10% * $i)};
+      --bl-sub-light-#{10 - $i}: #{mix($darkSub, #ffffff, 10% * $i)};
+      --bl-sub-dark-#{10 - $i}: #{mix($darkSub, #000000, 10% * $i)};
+      --bl-main-light-#{10 - $i}: #{mix($darkMain, #ffffff, 10% * $i)};
+      --bl-main-dark-#{10 - $i}: #{mix($darkMain, #000000, 10% * $i)}; 
+      --el-color-primary-light-#{10 - $i}: var(--el-color-primary-dark-#{10 - $i})!important;
+      --el-color-info-light-#{10 - $i}: var(--el-color-info-dark-#{10 - $i})!important;
+    }
+  }
+}
+
+.slide-enter {
+  --step: 60ms;
+  --initial: 0ms;
+  animation: fade-enter 1s both 1;
+  animation-delay: calc(var(--initial) + var(--stage) * var(--step))
+}
+
+@keyframes fade-enter {
+  0% {
+    // transform: translateX(10px);
+    opacity: 0
+  }
+
+  to {
+    // transform: translateX(0);
+    opacity: 100
+  }
+}
+
+// [data-starport-craft] {
+//   background: #0805;
+// }
+// [data-starport-proxy]:not([data-starport-landed]) {
+//   background: #8005;
+// }
+// $for 

@@ -2,6 +2,7 @@ import { appDescription } from './constants/index'
 import { pwa } from './config/pwa'
 
 export default defineNuxtConfig({
+
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -18,18 +19,29 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@element-plus/nuxt',
   ],
-  experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
-    payloadExtraction: false,
-    inlineSSRStyles: false,
-    renderJsonPayloads: true,
-  },
-
+  // experimental: {
+  //   // when using generate, payload js assets included in sw precache manifest
+  //   // but missing on offline, disabling extraction it until fixed
+  //   payloadExtraction: false,
+  //   inlineSSRStyles: false,
+  //   renderJsonPayloads: true,
+  // },
   css: [
     '@unocss/reset/tailwind.css',
-    'assets/css/main.scss',
+    // '@/assets/css/global.scss',
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+          @import '@/assets/css/global.scss';  
+
+        `,
+        },
+      },
+    },
+  },
 
   colorMode: {
     classSuffix: '',

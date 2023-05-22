@@ -62,10 +62,10 @@ onMounted(() => {
         const clipPath = [
           // 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
           // 'polygon(-50% 50%, 50% -50%, 150% 50%, 50% 150%',
-          // 'polygon(0 0, 50% 50%, 100% 100%, 50% 50%)',
-          // 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
+          'polygon(0 0, 50% 50%, 100% 100%, 50% 50%)',
+          'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
+          // `circle(0px at ${x}px ${y}px)`,
+          // `circle(${endRadius}px at ${x}px ${y}px)`,
         ]
         document.documentElement.animate(
           {

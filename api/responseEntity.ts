@@ -5,3 +5,7 @@ export interface Article {
   createdAt: number
   title: string
 }
+export interface Tag {
+  _id: string
+  tagName: string
+}

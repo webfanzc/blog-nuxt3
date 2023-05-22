@@ -2,7 +2,7 @@ import type { UseFetchOptions } from 'nuxt/app'
 import type { UnwrapRef } from 'vue'
 import type * as URLKEYS from './URLConstants'
 import type { ResponseType } from './apiResponseType'
-import { GET_ARTICLES, GET_ARTICLE_DETAIL } from './URLConstants'
+import { GET_ARTICLES, GET_ARTICLE_DETAIL, GET_TAGS } from './URLConstants'
 import type { DeepExpand, ObjectValues } from '~/types/utils'
 import service from '~/utils/request'
 
@@ -92,9 +92,13 @@ export function initData<T>(
 export function getArticles() {
   return getCaptured(GET_ARTICLES)
 }
-interface GetArticleDetailParams {
+export interface GetArticleDetailParams {
   id: string
 }
 export function getArticleDetail(params: GetArticleDetailParams) {
   return getCaptured(GET_ARTICLE_DETAIL, params)
+}
+
+export function getTags() {
+  return getCaptured(GET_TAGS)
 }

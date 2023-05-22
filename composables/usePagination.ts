@@ -24,7 +24,7 @@ export default function usePagination<
   })
 
   const total = ref(0)
-  const list = ref<ResponseType[T]>([])
+  const list = ref<ResponseType[T]>([] as unknown as ResponseType[T])
   const pageCount = computed(() => {
     return Math.ceil(total.value / (page.pageSize ?? 10))
   })
@@ -39,7 +39,7 @@ export default function usePagination<
     }
     try {
       const res = await initData<T>(url, query)
-      list.value = [list.value, ...res.list] as UnwrapRef<ResponseType[T]>
+      list.value = [...list.value, ...res.list] as UnwrapRef<ResponseType[T]>
       total.value = res.total
 
       return {
@@ -52,11 +52,16 @@ export default function usePagination<
     }
   }
 
+  const clearList = () => {
+    list.value = []
+  }
+
   return {
     page,
     total,
     pageCount,
     list,
     getList,
+    clearList,
   }
 }
