@@ -42,12 +42,12 @@ watch(currentTag, () => {
         >
           <NuxtLink :to="`/blog/${item._id}`">
             <li c="$bl-main" opacity-75 hover:opacity-100>
-              <Starport :port="item._id" class="slide-enter" min-h-6>
+              <Starport :port="item._id" class="slide-enter" h-6>
                 <span>
                   {{ item.title }}
                 </span>
               </Starport>
-              <Starport :port="`${item.createdAt}`">
+              <Starport :port="`${item.createdAt}`" h-6>
                 <span text-xs>
                   {{ dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}
                 </span>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import { Starport } from 'vue-starport'
 import { getTags } from '../api/index'
 
 const { tag: currentTag } = storeToRefs(useBlogStore())
@@ -13,9 +14,9 @@ const allTags = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div h-full>
     <ClientOnly>
-      <ElScrollbar max-height="400px" pr-3>
+      <ElScrollbar h-full pr-3>
         <ul flex flex-col gap-y-2>
           <div
             v-for="tag, idx in allTags"
@@ -26,9 +27,13 @@ const allTags = computed(() => {
             w-full
           >
             <li>
-              <ElCheckTag :checked="currentTag._id === tag._id" w-full c="$bl-main" @change="currentTag = tag">
-                {{ tag.tagName }}
-              </ElCheckTag>
+              <Starport :port="tag._id" :duration="800">
+                <div w-37>
+                  <ElCheckTag :checked="currentTag._id === tag._id" w-full c="$bl-main" @change="currentTag = tag">
+                    {{ tag.tagName }}
+                  </ElCheckTag>
+                </div>
+              </Starport>
             </li>
           </div>
         </ul>

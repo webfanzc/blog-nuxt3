@@ -19,13 +19,14 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@element-plus/nuxt',
   ],
-  // experimental: {
-  //   // when using generate, payload js assets included in sw precache manifest
-  //   // but missing on offline, disabling extraction it until fixed
-  //   payloadExtraction: false,
-  //   inlineSSRStyles: false,
-  //   renderJsonPayloads: true,
-  // },
+  experimental: {
+    // when using generate, payload js assets included in sw precache manifest
+    // but missing on offline, disabling extraction it until fixed
+    payloadExtraction: false,
+    inlineSSRStyles: false,
+    reactivityTransform: true,
+    renderJsonPayloads: true,
+  },
   css: [
     '@unocss/reset/tailwind.css',
     // '@/assets/css/global.scss',
@@ -75,6 +76,10 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
+        {
+          name: 'Keywords',
+          content: '个人博客,skelanimals,前端博客,Vue',
+        },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },

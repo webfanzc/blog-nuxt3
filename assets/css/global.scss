@@ -2,7 +2,7 @@ $primary: #bb83ca;
 $success: #38C066;
 $warning: #FFB000;
 $error: #E4464F;
-$info:#909399;
+$info: #909399;
 $background: #ffffff;
 $sub: #B3BCC9;
 $title: #6F8096;
@@ -71,9 +71,9 @@ html {
       --bl-sub-light-#{10 - $i}: #{mix($darkSub, #ffffff, 10% * $i)};
       --bl-sub-dark-#{10 - $i}: #{mix($darkSub, #000000, 10% * $i)};
       --bl-main-light-#{10 - $i}: #{mix($darkMain, #ffffff, 10% * $i)};
-      --bl-main-dark-#{10 - $i}: #{mix($darkMain, #000000, 10% * $i)}; 
-      --el-color-primary-light-#{10 - $i}: var(--el-color-primary-dark-#{10 - $i})!important;
-      --el-color-info-light-#{10 - $i}: var(--el-color-info-dark-#{10 - $i})!important;
+      --bl-main-dark-#{10 - $i}: #{mix($darkMain, #000000, 10% * $i)};
+      --el-color-primary-light-#{10 - $i}: var(--el-color-primary-dark-#{10 - $i}) !important;
+      --el-color-info-light-#{10 - $i}: var(--el-color-info-dark-#{10 - $i}) !important;
     }
   }
 }
@@ -104,3 +104,30 @@ html {
 //   background: #8005;
 // }
 // $for 
+
+.marked-body {
+
+  * {
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  :not(pre)>code[class*=language-],
+  pre {
+    padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(#f5f2f0, 0.9);
+  }
+}
+
+
+.dark {
+
+  .marked-body {
+
+    :not(pre)>code[class*=language-],
+    pre {
+      background-color: rgba($white, 0.1);
+    }
+  }
+}

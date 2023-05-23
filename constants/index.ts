@@ -1,5 +1,5 @@
 export const appName = 'Skelanimals Blog'
-export const appDescription = 'A Blog for Skelanimals'
+export const appDescription = 'A Blog for Skelanimals, Skelanimals 的个人博客'
 export const APPEARANCE_KEY = 'APPEARANCE'
 export const DEFAULT_THEME = {
   light: {
