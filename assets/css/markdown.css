@@ -454,8 +454,8 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  margin-top: 24px;
-  margin-bottom: 16px;
+  /* margin-top: 24px; */
+  /* margin-bottom: 16px; */
   font-weight: 600;
   line-height: 1.25;
 }

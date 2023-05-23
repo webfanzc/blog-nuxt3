@@ -30,9 +30,15 @@ const mark = markedIt({
     return hljs.highlight(code, { language }).value
   },
 })
-mark.renderer.rules.html_block = function (token, idx, options, env, self) {
-  console.log(token, idx, options, env)
-  return token[idx].content
+const oldFence = mark.renderer.rules.fence
+
+mark.renderer.rules.fence = function (token, idx, options, env, self) {
+  const topToken = token.filter(item => item.tag && item.type.includes('open'))
+
+  topToken.forEach((token, idx) => {
+    token.attrSet('style', `--stage: ${idx};`)
+  })
+  return oldFence!(token, idx, options, env, self)
 }
 mark.renderer.rules.my_token = function (token, idx, options, env, self) {
   return token[idx].content
@@ -62,7 +68,7 @@ onMounted(() => {
             </span>
           </div>
         </Starport>
-        <Starport v-for="item in data?.tags" :key="item._id" inline-block h-6 :port="item._id" :duration="800">
+        <Starport v-for="item in data?.tags" :key="item._id" inline-block h-6 :port="item._id">
           <div w-max>
             <ElTag w-max :type="theme">
               {{ item.tagName }}
@@ -79,7 +85,6 @@ onMounted(() => {
         <div>
           <div>
             <div class="marked-body markdown-body" v-html="content" />
-            <!-- {{ content }} -->
           </div>
         </div>
       </ElScrollbar>
@@ -89,10 +94,9 @@ onMounted(() => {
 
 <style scoped lang="scss">
 :deep(.marked-body){
-  > * {
-  --step: 60ms;
+   * {
+  --step: 50ms;
   --initial: 0ms;
-  --stage: 1;
   animation: fade-enter 1s both 1;
   animation-delay: calc(var(--initial) + var(--stage) * var(--step))
   }

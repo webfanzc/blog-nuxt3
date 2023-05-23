@@ -27,7 +27,7 @@ const allTags = computed(() => {
             w-full
           >
             <li>
-              <Starport :port="tag._id" :duration="800">
+              <Starport :port="tag._id">
                 <div w-37>
                   <ElCheckTag :checked="currentTag._id === tag._id" w-full c="$bl-main" @change="currentTag = tag">
                     {{ tag.tagName }}
