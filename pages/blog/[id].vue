@@ -7,6 +7,8 @@ import '@/assets/css/markdown.css'
 import Viewer from 'viewerjs'
 import 'viewerjs/dist/viewer.css'
 import markedIt from 'markdown-it'
+import { storeToRefs } from 'pinia'
+import type { Tag } from '../../api/responseEntity'
 import { getArticleDetail } from '~/api/index'
 
 const route = useRoute()
@@ -31,24 +33,44 @@ const mark = markedIt({
   },
 })
 const oldFence = mark.renderer.rules.fence
+const oldRender = mark.renderer.renderAttrs
 
-mark.renderer.rules.fence = function (token, idx, options, env, self) {
+mark.renderer.rules.fence = (token, idx, options, env, self) => {
   const topToken = token.filter(item => item.tag && item.type.includes('open'))
 
   topToken.forEach((token, idx) => {
     token.attrSet('style', `--stage: ${idx};`)
   })
+
   return oldFence!(token, idx, options, env, self)
 }
-mark.renderer.rules.my_token = function (token, idx, options, env, self) {
-  return token[idx].content
+
+mark.renderer.renderAttrs = (token) => {
+  if (token.type === 'link_open')
+    token.attrSet('target', '_blank')
+
+  return oldRender!(token)
 }
+
 const content = computed(() => {
   if (!data.value)
     return ''
 
   return mark.render(data.value?.content)
 })
+
+const blogStore = useBlogStore()
+let { tag } = $(storeToRefs(blogStore))
+
+const router = useRouter()
+
+function onTagClick(clickTag: Tag) {
+  tag = clickTag
+
+  router.push({
+    path: '/blog',
+  })
+}
 
 onMounted(() => {
   setTimeout(() => {
@@ -70,7 +92,7 @@ onMounted(() => {
         </Starport>
         <Starport v-for="item in data?.tags" :key="item._id" inline-block h-6 :port="item._id">
           <div w-max>
-            <ElTag w-max :type="theme">
+            <ElTag w-max :type="theme" cursor-pointer @click="onTagClick(item)">
               {{ item.tagName }}
             </ElTag>
           </div>

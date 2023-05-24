@@ -109,7 +109,7 @@ html {
 
   * {
     word-break: break-all;
-    white-space: pre-wrap;
+    // white-space: pre-wrap;
   }
 
   :not(pre)>code[class*=language-],
@@ -117,6 +117,10 @@ html {
     padding: 8px;
     border-radius: 6px;
     background-color: rgba(#f5f2f0, 0.9);
+    *{
+      white-space: pre-wrap;
+
+    }
   }
 }
 

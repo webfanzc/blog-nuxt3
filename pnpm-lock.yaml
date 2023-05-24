@@ -2,7 +2,7 @@ lockfileVersion: '6.0'
 
 patchedDependencies:
   vue-starport@0.3.0:
-    hash: ps62lnuxrcd3qd7hb6uhurcvye
+    hash: 3qer763gf5lilkblv3dpuwbemm
     path: patches/vue-starport@0.3.0.patch
 
 dependencies:
@@ -23,7 +23,7 @@ dependencies:
     version: registry.npmmirror.com/viewerjs@1.11.3
   vue-starport:
     specifier: ^0.3.0
-    version: registry.npmmirror.com/vue-starport@0.3.0(patch_hash=ps62lnuxrcd3qd7hb6uhurcvye)
+    version: registry.npmmirror.com/vue-starport@0.3.0(patch_hash=3qer763gf5lilkblv3dpuwbemm)
   vue-tsc:
     specifier: ^1.6.4
     version: 1.6.4(typescript@5.0.4)
@@ -13683,7 +13683,7 @@ packages:
     dependencies:
       vue: registry.npmmirror.com/vue@3.2.47
 
-  registry.npmmirror.com/vue-starport@0.3.0(patch_hash=ps62lnuxrcd3qd7hb6uhurcvye):
+  registry.npmmirror.com/vue-starport@0.3.0(patch_hash=3qer763gf5lilkblv3dpuwbemm):
     resolution: {integrity: sha512-CfwYVxJDFqj7zoDw0TAMdNdpefuTdUH3rtupsadSa1je5Z7S/XwUCdxN0vVjBEEvWh33HmqjdK0IRQMWDlV7VQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-starport/-/vue-starport-0.3.0.tgz}
     id: registry.npmmirror.com/vue-starport/0.3.0
     name: vue-starport

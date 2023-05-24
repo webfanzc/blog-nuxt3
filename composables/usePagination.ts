@@ -4,8 +4,8 @@ import { initData } from '~/api'
 import type { ResponseType } from '~/api/apiResponseType'
 
 interface PageOptions {
-  pageNo?: number
-  pageSize?: number
+  pageNo: number
+  pageSize: number
 }
 
 export default function usePagination<
@@ -39,7 +39,7 @@ export default function usePagination<
     }
     try {
       const res = await initData<T>(url, query)
-      list.value = [...list.value, ...res.list] as UnwrapRef<ResponseType[T]>
+      list.value.push(...res.list)
       total.value = res.total
 
       return {
