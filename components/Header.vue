@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const tabs = ref([
   { name: '博客', path: '/blog' },
-  { name: 'About', path: '/about' },
-  { name: 'Demo', path: '/contact' },
+  // { name: 'About', path: '/about' },
+  // { name: 'Demo', path: '/contact' },
 ])
 </script>
 

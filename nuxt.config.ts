@@ -43,6 +43,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  devServer: {
+    port: 8080,
+  },
 
   colorMode: {
     classSuffix: '',
@@ -57,11 +60,13 @@ export default defineNuxtConfig({
       '/api/**': {
         proxy: 'http://localhost:3000/**',
       },
+      '/images/**': {
+        proxy: 'http://localhost:3000/images/**',
+      },
     },
     prerender: {
       crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/hi'],
+      routes: ['/blog'],
     },
   },
 
