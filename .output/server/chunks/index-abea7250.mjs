@@ -1081,7 +1081,7 @@ function request(url, config) {
   return new Promise((resolve, reject) => {
     service(url, {
       body: config.body || "",
-      params: config.params,
+      params: { ...config.params, ts: Date.now() },
       method: config.method,
       headers: config.headers
     }).then((res) => {
@@ -1109,4 +1109,4 @@ function getTags() {
 }
 
 export { ElScrollbar as E, GET_ARTICLES as G, _export_sfc as _, buildProps as a, buildProp as b, addUnit as c, definePropType as d, useAsyncData as e, useBlogStore as f, getArticleDetail as g, useNuxtData as h, isUndefined as i, clearNuxtData as j, useLazyAsyncData as k, isBoolean as l, getTags as m, initData as n, useNamespace as u, withInstall as w };
-//# sourceMappingURL=index-4753aea1.mjs.map
+//# sourceMappingURL=index-abea7250.mjs.map

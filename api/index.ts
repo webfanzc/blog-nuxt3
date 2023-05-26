@@ -28,7 +28,7 @@ function request<T extends RequestKeyType>(
     */
     service<ResponseType[T]>(url, {
       body: config.body || '',
-      params: config.params,
+      params: { ...config.params, ts: Date.now() },
       method: config.method as unknown as 'get' | 'post',
       headers: config.headers as UnwrapRef<typeof config['headers']>,
     })
