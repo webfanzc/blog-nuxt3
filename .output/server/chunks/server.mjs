@@ -855,7 +855,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_id_-2c92e80e.mjs').then((m) => m.default || m)
+    component: () => import('./_id_-e0d76303.mjs').then((m) => m.default || m)
   },
   {
     name: "blog",

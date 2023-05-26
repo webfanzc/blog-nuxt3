@@ -90,7 +90,7 @@ onMounted(() => {
             </span>
           </div>
         </Starport>
-        <Starport v-for="item in data?.tags" :key="item._id" inline-block h-6 :port="item._id">
+        <Starport v-for="item in data?.tags" :key="item._id" mr-2 inline-block h-6 :port="item._id">
           <div w-max>
             <ElTag w-max :type="theme" cursor-pointer @click="onTagClick(item)">
               {{ item.tagName }}
