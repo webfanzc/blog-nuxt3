@@ -863,7 +863,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./index-bf0a88f4.mjs').then((m) => m.default || m)
+    component: () => import('./index-5ed6c596.mjs').then((m) => m.default || m)
   },
   {
     name: "index",

@@ -489,7 +489,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, _parent2, _scopeId));
               _push2(`</div>`);
             });
-            _push2(`<!--]--><li${ssrRenderAttrs(mergeProps({ "h-10": "" }, ssrGetDirectiveProps(_ctx, _directive_loading, unref(pending))))}${_scopeId}></li></ul>`);
+            _push2(`<!--]--><li${ssrRenderAttrs(mergeProps({
+              "element-loading-background": "transparent",
+              "h-10": ""
+            }, ssrGetDirectiveProps(_ctx, _directive_loading, unref(pending))))}${_scopeId}></li></ul>`);
           } else {
             return [
               createVNode("ul", {
@@ -556,7 +559,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     }, 1032, ["to"])
                   ], 4);
                 }), 128)),
-                withDirectives(createVNode("li", { "h-10": "" }, null, 512), [
+                withDirectives(createVNode("li", {
+                  "element-loading-background": "transparent",
+                  "h-10": ""
+                }, null, 512), [
                   [_directive_loading, unref(pending)]
                 ])
               ])
@@ -577,4 +583,4 @@ _sfc_main.setup = (props, ctx) => {
 };
 
 export { _sfc_main as default };
-//# sourceMappingURL=index-bf0a88f4.mjs.map
+//# sourceMappingURL=index-5ed6c596.mjs.map

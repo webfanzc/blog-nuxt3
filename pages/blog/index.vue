@@ -112,7 +112,7 @@ onMounted(() => {
             </NuxtLink>
           </div>
 
-          <li v-loading="pending" h-10 />
+          <li v-loading="pending" element-loading-background="transparent" h-10 />
         </ul>
       </ElScrollbar>
     </div>
