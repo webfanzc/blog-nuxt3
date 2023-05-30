@@ -1,9 +1,10 @@
 <script setup lang='ts'>
-import { Plum } from '~/utils/plum'
+import { Plum } from 'plum.js'
 
 const el = ref<HTMLCanvasElement | null>(null)
 const plumInstance = ref(new Plum())
 const { width, height } = useWindowSize()
+
 onMounted(() => {
   plumInstance.value.start(el.value as HTMLCanvasElement, { width: width.value, height: height.value })
 })

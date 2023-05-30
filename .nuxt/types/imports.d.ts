@@ -298,7 +298,6 @@ declare global {
   const ElMessage: typeof import('element-plus')['ElMessage']
   const ElMessageBox: typeof import('element-plus')['ElMessageBox']
   const ElNotification: typeof import('element-plus')['ElNotification']
-  const Plum: typeof import('../../utils/plum')['Plum']
   const abortNavigation: typeof import('../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app')['abortNavigation']
   const addRouteMiddleware: typeof import('../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app')['addRouteMiddleware']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
@@ -949,7 +948,6 @@ declare module 'vue' {
     readonly ElMessage: UnwrapRef<typeof import('element-plus')['ElMessage']>
     readonly ElMessageBox: UnwrapRef<typeof import('element-plus')['ElMessageBox']>
     readonly ElNotification: UnwrapRef<typeof import('element-plus')['ElNotification']>
-    readonly Plum: UnwrapRef<typeof import('../../utils/plum')['Plum']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app')['addRouteMiddleware']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>

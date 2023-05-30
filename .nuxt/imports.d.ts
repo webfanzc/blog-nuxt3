@@ -13,7 +13,6 @@ export { default as usePagination } from '../composables/usePagination';
 export { useUserStore } from '../composables/user';
 export { setCSSVariable, getCSSVariable, colorMix, genThemeColor, generateThemeString, genCustomThemeVars, genElementColor } from '../utils/browserUtils';
 export { isBrowser } from '../utils/index';
-export { Plum } from '../utils/plum';
 export { default as request } from '../utils/request';
 export { usePinia } from '../node_modules/.pnpm/@pinia+nuxt@0.4.10_rollup@2.79.1_typescript@5.0.4_vue@3.2.47/node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useColorMode } from '../node_modules/.pnpm/@nuxtjs+color-mode@3.2.0_rollup@2.79.1/node_modules/@nuxtjs/color-mode/dist/runtime/composables';

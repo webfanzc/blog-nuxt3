@@ -1,1 +1,0 @@
-import{a as s,b as t,o as e,e as o,c as n,w as c,ab as l,j as a}from"./entry.5d5c16c2.js";const i=a("div",{italic:"",op50:""},[a("span",{"animate-pulse":""},"Loading...")],-1),d=s({__name:"index",setup(p){return t().push("/blog"),(r,u)=>(e(),o("div",null,[(e(),n(l,null,{fallback:c(()=>[i]),_:1}))]))}});export{d as default};

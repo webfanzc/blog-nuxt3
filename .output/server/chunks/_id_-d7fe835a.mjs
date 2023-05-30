@@ -307,7 +307,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
-            _push2(`<div mx-auto h-full w-80ch flex flex-col data-v-aeb64909${_scopeId}><div h-20 data-v-aeb64909${_scopeId}>`);
+            _push2(`<div mx-auto h-full w-80ch flex flex-col data-v-d05ef46c${_scopeId}><div h-20 data-v-d05ef46c${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Starport), {
               port: `${unref(route).params.id}`,
               "h-7": ""
@@ -315,7 +315,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 var _a2, _b2;
                 if (_push3) {
-                  _push3(`<div data-v-aeb64909${_scopeId2}><span c="$bl-main" text-lg font-bold data-v-aeb64909${_scopeId2}>${ssrInterpolate((_a2 = unref(data)) == null ? void 0 : _a2.title)}</span></div>`);
+                  _push3(`<div data-v-d05ef46c${_scopeId2}><span c="$bl-main" text-lg font-bold data-v-d05ef46c${_scopeId2}>${ssrInterpolate((_a2 = unref(data)) == null ? void 0 : _a2.title)}</span></div>`);
                 } else {
                   return [
                     createVNode("div", null, [
@@ -341,7 +341,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`<div w-max data-v-aeb64909${_scopeId2}>`);
+                    _push3(`<div w-max data-v-d05ef46c${_scopeId2}>`);
                     _push3(ssrRenderComponent(_component_ElTag, {
                       "w-max": "",
                       type: unref(theme),
@@ -389,7 +389,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 var _a2, _b2;
                 if (_push3) {
-                  _push3(`<span text-xs data-v-aeb64909${_scopeId2}>${ssrInterpolate(unref(dayjs)((_a2 = unref(data)) == null ? void 0 : _a2.createdAt).format("YYYY-MM-DD HH:mm:ss"))}</span>`);
+                  _push3(`<span text-xs data-v-d05ef46c${_scopeId2}>${ssrInterpolate(unref(dayjs)((_a2 = unref(data)) == null ? void 0 : _a2.createdAt).format("YYYY-MM-DD HH:mm:ss"))}</span>`);
                 } else {
                   return [
                     createVNode("span", { "text-xs": "" }, toDisplayString(unref(dayjs)((_b2 = unref(data)) == null ? void 0 : _b2.createdAt).format("YYYY-MM-DD HH:mm:ss")), 1)
@@ -405,7 +405,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<div data-v-aeb64909${_scopeId2}><div data-v-aeb64909${_scopeId2}><div class="marked-body markdown-body" data-v-aeb64909${_scopeId2}>${unref(content)}</div></div></div>`);
+                  _push3(`<div data-v-d05ef46c${_scopeId2}><div data-v-d05ef46c${_scopeId2}><div class="marked-body markdown-body" data-v-d05ef46c${_scopeId2}>${unref(content)}</div></div></div>`);
                 } else {
                   return [
                     createVNode("div", null, [
@@ -520,7 +520,7 @@ _sfc_main.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/blog/[id].vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const _id_ = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-aeb64909"]]);
+const _id_ = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-d05ef46c"]]);
 
 export { _id_ as default };
-//# sourceMappingURL=_id_-a24623c5.mjs.map
+//# sourceMappingURL=_id_-d7fe835a.mjs.map
