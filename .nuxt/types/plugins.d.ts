@@ -9,7 +9,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/.pnpm/@pinia+nuxt@0.4.10_rollup@2.79.1_typescript@5.0.4_vue@3.2.47/node_modules/@pinia/nuxt/dist/runtime/plugin.vue3").default> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app/plugins/revive-payload.server").default> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/app/plugins/revive-payload.client").default> &
-  InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+devtools@0.4.6_nuxt@3.4.3_rollup@2.79.1_vite@4.3.5/node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client").default> &
   InjectionType<typeof import("../components.plugin").default> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/head/runtime/plugins/unhead").default> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.4.3_@types+node@18.14.0_eslint@8.40.0_rollup@2.79.1_sass@1.62.1_typescript@5.0.4_vue-tsc@1.6.4/node_modules/nuxt/dist/pages/runtime/plugins/router").default> &

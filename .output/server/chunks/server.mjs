@@ -840,6 +840,9 @@ const unhead_sKxlf2F1h3 = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
+const __nuxt_page_meta = {
+  layout: "demos"
+};
 const _routes = [
   {
     name: "all",
@@ -855,7 +858,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_id_-d7fe835a.mjs').then((m) => m.default || m)
+    component: () => import('./_id_-745ca461.mjs').then((m) => m.default || m)
   },
   {
     name: "blog",
@@ -863,7 +866,15 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./index-5ed6c596.mjs').then((m) => m.default || m)
+    component: () => import('./index-87d58aea.mjs').then((m) => m.default || m)
+  },
+  {
+    name: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.name) ?? "demos",
+    path: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.path) ?? "/demos",
+    meta: __nuxt_page_meta || {},
+    alias: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.alias) || [],
+    redirect: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.redirect) || void 0,
+    component: () => import('./index-ee61525e.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1178,8 +1189,8 @@ const _wrapIf = (component, props, slots) => {
   return { default: () => props ? h(component, props === true ? {} : props, slots) : h(Fragment, {}, slots) };
 };
 const layouts = {
-  default: () => import('./default-35eda414.mjs').then((m) => m.default || m),
-  home: () => import('./home-eae80356.mjs').then((m) => m.default || m)
+  default: () => import('./default-2c351660.mjs').then((m) => m.default || m),
+  demos: () => import('./demos-00698a6e.mjs').then((m) => m.default || m)
 };
 const LayoutLoader = /* @__PURE__ */ defineComponent({
   name: "LayoutLoader",
